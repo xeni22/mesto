@@ -1,0 +1,21 @@
+.header {
+  width: 880px;
+  height: 74px;
+  margin: 45px auto 40px auto;
+  border-bottom: 1px solid rgba(84,84,84, 0.3);
+}
+@media (max-width: 1024px) {
+  .header {
+    width: 70%;
+  }  
+}
+@media (max-width: 768px) {
+  .header {
+    width: 100%;
+    height: 56px;
+    margin-top: 28px;
+    margin-bottom: 42px;
+    padding: 0 27px;
+    box-sizing: border-box;
+  }  
+}

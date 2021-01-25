@@ -1,0 +1,32 @@
+.profile {
+  width: 880px;
+  margin: 0 auto 50px auto;
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 120px 1fr 150px;
+  grid-template-rows: repeat(1, min-content);
+  gap: 30px;
+  grid-template-areas:
+  "profile__avatar profile__info add-button";
+}
+@media (max-width: 1024px) {
+  .profile {
+    width: 70%;
+  }  
+}
+@media (max-width: 768px) {
+  .profile {
+    width: 88%;
+    margin-bottom: 36px;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, min-content);
+    gap: 26px;
+    grid-template-areas:
+    "profile__avatar" 
+    "profile__info"
+    "add-button";
+  }  
+}

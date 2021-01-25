@@ -1,0 +1,27 @@
+.edit-form__close {
+  border: 0;
+  padding: 0;
+  background-image: url(../../../images/close-button.svg);
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  background-repeat: no-repeat;
+  transform: translate(-10%, -10%);
+  transition: opacity 0.5s linear;
+}
+.edit-form__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .edit-form__close {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    top: -13%;
+    right: 3%;
+  }  
+}

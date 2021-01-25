@@ -1,0 +1,24 @@
+.edit-form__save {
+  padding: 18px 125px;
+  box-sizing: border-box;
+  background: #000;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  transition: opacity 0.3s linear;
+}
+.edit-form__save:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+@media (max-width: 768px) {
+  .edit-form__save {
+    margin-top: 15px;
+    padding: 14px 82px;
+    font-size: 14px;
+    line-height: 17px;
+  }  
+}
