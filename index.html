@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
+  <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
@@ -15,65 +15,67 @@
       <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография профиля">
       <div class="profile__info">
         <div class="profile__edit-line">
-          <p class="profile__name">Жак-Ив Кусто</p>
-          <img class="profile__edit" src="./images/edit-button.svg" alt="Кнопка редактирования">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit" type="button" aria-label="Редактировать профиль"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <img class="add-button" src="./images/add-button.svg" alt="Кнопка добавления записи">
+      <button class="profile__add" type="button" aria-label="Добавить запись"></button>
     </section>
     <section class="elements">
       <article class="element">
         <img class="element__image" src="./images/dmitry-kovalchuk-karachay-cherkess.jpg" alt="Карачаево-Черкесская Республика">
         <div class="element__body">
-          <p class="element__title">Карачаево-Черкесская Республика</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Карачаево-Черкесская Республика</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__image" src="./images/juvnsky-anton-maksimov-elbrus.jpg" alt="Гора Эльбрус">
         <div class="element__body">
-          <p class="element__title">Гора Эльбрус</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__image" src="./images/polina-podlesnaya-dombay.jpg" alt="Домбай">
         <div class="element__body">
-          <p class="element__title">Домбай</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__image" src="./images/yoad-shejtman-kilimanjaro.jpg" alt="Килиманджаро">
         <div class="element__body">
-          <p class="element__title">Килиманджаро</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Килиманджаро</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__image" src="./images/ekaterina-sazonova-baikal.jpg" alt="Байкал">
         <div class="element__body">
-          <p class="element__title">Байкал</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Байкал</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__image" src="./images/azamat-ramazanov-st-petersburg.jpg" alt="Санкт-Петербург">
         <div class="element__body">
-          <p class="element__title">Санкт-Петербург</p>
-          <div class="element__like"></div>
+          <h2 class="element__title">Санкт-Петербург</h2>
+          <button class="element__like" type="button" aria-label="Мне нравится"></button>
         </div>
       </article>
     </section>
-    <div class="overlay overlay_hidden">
-      <form class="edit-form">
-        <h2 class="edit-form__title">Редактировать профиль</h2>
-        <input class="edit-form__name" type="text" name="profile__name" id="profile__name" value="Жак-Ив Кусто" placeholder="Имя">
-        <input class="edit-form__description" type="text" name="profile__description" id="profile__description" value="Исследователь океана" placeholder="О себе">
-        <input class="edit-form__save" type="submit" value="Сохранить">
-        <button class="edit-form__close" type="button" aria-label="Закрыть окно"></button>
-      </form>
+    <div class="overlay">
+      <div class="edit-form">
+        <form name="editProfile">
+          <h2 class="edit-form__title">Редактировать профиль</h2>
+          <input class="edit-form__input" type="text" name="profileName" id="profileName" placeholder="Имя">
+          <input class="edit-form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе">
+          <input class="edit-form__save" type="submit" value="Сохранить">
+          <button class="edit-form__close" type="button" aria-label="Закрыть окно"></button>
+        </form>
+      </div>
     </div>
   </main>
   <footer class="footer">

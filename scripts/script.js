@@ -2,24 +2,31 @@ let overlay = document.querySelector(".overlay");
 let popupOpenButton = document.querySelector(".profile__edit");
 let popupCloseButton = document.querySelector(".edit-form__close");
 let editForm = document.querySelector(".edit-form");
-let popupNameField = document.querySelector(".edit-form__name");
-let popupDescriptionField = document.querySelector(".edit-form__description");
+let popupField = document.querySelectorAll(".edit-form__input");
 let profileNameField = document.querySelector(".profile__name");
 let profileDescriptionField = document.querySelector(".profile__description");
 
-function togglePopup(evt) {
+function openPopup(evt) {
   evt.preventDefault();
-  overlay.classList.toggle("overlay_hidden");
+  overlay.classList.add("overlay_shown");
+  popupField[0].setAttribute('value', profileNameField.textContent);
+  popupField[1].setAttribute('value', profileDescriptionField.textContent);
 }
-popupOpenButton.addEventListener("click", togglePopup);
-popupCloseButton.addEventListener("click", togglePopup);
+
+function closePopup(evt) {
+  evt.preventDefault();
+  overlay.classList.remove("overlay_shown");
+}
 
 function updateProfileInfo(evt) {
     evt.preventDefault();
-    popupNameField.value;
-    popupDescriptionField.value;
-    profileNameField.textContent = popupNameField.value;
-    profileDescriptionField.textContent = popupDescriptionField.value;
+    popupField[0].value;
+    popupField[1].value;
+    profileNameField.textContent = popupField[0].value;
+    profileDescriptionField.textContent = popupField[1].value;
+    closePopup(evt);
 }
+
+popupOpenButton.addEventListener("click", openPopup);
+popupCloseButton.addEventListener("click", closePopup);
 editForm.addEventListener("submit", updateProfileInfo);
-editForm.addEventListener("submit", togglePopup);

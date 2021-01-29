@@ -1,7 +1,15 @@
 .profile__edit {
+  padding: 0;
+  height: 24px;
+  width: 24px;
   display: inline;
   margin-left: 18px;
   transition: opacity 0.3s linear;
+  background-image: url(../../../images/pencil-icon.svg);
+  background-position: center;
+  border: 1px solid #fff;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }
 .profile__edit:hover {
   cursor: pointer;
@@ -9,7 +17,9 @@
 }
 @media (max-width: 768px) {
   .profile__edit {
+    height: 18px;
     width: 18px;
     margin-left: 10px;
+    background-image: url(../../../images/pencil-icon-mobile.svg);
   }  
 }
