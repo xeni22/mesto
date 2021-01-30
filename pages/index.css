@@ -28,11 +28,10 @@
 
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/overlay/_shown/overlay_shown.css);
+@import url(../blocks/overlay/__popup/overlay__popup.css);
+@import url(../blocks/overlay/__close/overlay__close.css);
 
-@import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__close/popup__close.css);
-
-@import url(../blocks/edit-form/edit-form.css);
-@import url(../blocks/edit-form/__input/edit-form__input.css);
-@import url(../blocks/edit-form/__save/edit-form__save.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__save/form__save.css);

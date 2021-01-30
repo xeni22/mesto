@@ -1,4 +1,4 @@
-.edit-form__save {
+.form__save {
   width: 100%;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -14,12 +14,12 @@
   text-align: center;
   transition: opacity 0.3s linear;
 }
-.edit-form__save:hover {
+.form__save:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 @media (max-width: 768px) {
-  .edit-form__save {
+  .form__save {
     margin-top: 45px;
     font-size: 14px;
     line-height: 17px;

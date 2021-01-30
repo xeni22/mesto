@@ -1,7 +1,7 @@
 let overlay = document.querySelector(".overlay");
 let popupOpenButton = document.querySelector(".profile__edit");
-let popupCloseButton = document.querySelector(".popup__close");
-let editForm = overlay.querySelector(".edit-form");
+let popupCloseButton = document.querySelector(".overlay__close");
+let form = overlay.querySelector(".form");
 let popupFieldName = document.getElementById("profileName");
 let popupFieldeDescription = document.getElementById("profileDescription");
 let profileNameField = document.querySelector(".profile__name");
@@ -28,4 +28,4 @@ function updateProfileInfo(evt) {
 
 popupOpenButton.addEventListener("click", openPopup);
 popupCloseButton.addEventListener("click", closePopup);
-editForm.addEventListener("submit", updateProfileInfo);
+form.addEventListener("submit", updateProfileInfo);
