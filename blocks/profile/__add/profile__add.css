@@ -5,7 +5,7 @@
   border: 2px solid #fff;
   grid-area: add-button;
   transition: opacity 0.3s linear;
-  background-image: url(../../../images/plus-icon.png);
+  background-image: url(../../../images/plus-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;

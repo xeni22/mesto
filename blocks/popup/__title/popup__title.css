@@ -1,11 +1,11 @@
-.edit-form__title {
+.popup__title {
   margin: 0 0 44px 0;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
 }
 @media (max-width: 768px) {
-  .edit-form__title {
+  .popup__title {
     margin-bottom: 69px;
     font-size: 18px;
     line-height: 22px;

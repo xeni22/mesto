@@ -1,4 +1,4 @@
-.edit-form__close {
+.popup__close {
   border: 0;
   padding: 0;
   background-image: url(../../../images/close-button.svg);
@@ -12,12 +12,12 @@
   transform: translate(-10%, -10%);
   transition: opacity 0.5s linear;
 }
-.edit-form__close:hover {
+.popup__close:hover {
   cursor: pointer;
   opacity: 0.6;
 }
 @media (max-width: 768px) {
-  .edit-form__close {
+  .popup__close {
     width: 20px;
     height: 20px;
     background-size: contain;
