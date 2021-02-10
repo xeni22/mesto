@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./scripts/script.js" defer></script>
 </head>
 <body class="page">
   <header class="header">
@@ -23,64 +24,42 @@
       <button class="profile__add" type="button" aria-label="Добавить запись"></button>
     </section>
     <section class="elements">
-      <article class="element">
-        <img class="element__image" src="./images/dmitry-kovalchuk-karachay-cherkess.jpg" alt="Карачаево-Черкесская Республика">
-        <div class="element__body">
-          <h2 class="element__title">Карачаево-Черкесская Республика</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__image" src="./images/juvnsky-anton-maksimov-elbrus.jpg" alt="Гора Эльбрус">
-        <div class="element__body">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__image" src="./images/polina-podlesnaya-dombay.jpg" alt="Домбай">
-        <div class="element__body">
-          <h2 class="element__title">Домбай</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__image" src="./images/yoad-shejtman-kilimanjaro.jpg" alt="Килиманджаро">
-        <div class="element__body">
-          <h2 class="element__title">Килиманджаро</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__image" src="./images/ekaterina-sazonova-baikal.jpg" alt="Байкал">
-        <div class="element__body">
-          <h2 class="element__title">Байкал</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__image" src="./images/azamat-ramazanov-st-petersburg.jpg" alt="Санкт-Петербург">
-        <div class="element__body">
-          <h2 class="element__title">Санкт-Петербург</h2>
-          <button class="element__like" type="button" aria-label="Мне нравится"></button>
-        </div>
-      </article>
+      
     </section>
     <div class="overlay">
       <div class="overlay__popup">
-        <form class="form" name="editProfile">
+        <form class="form" name="editProfile" id="editProfile">
           <h2 class="form__title">Редактировать профиль</h2>
           <input class="form__input" type="text" name="profileName" id="profileName" placeholder="Имя">
           <input class="form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе">
           <input class="form__save" type="submit" value="Сохранить">
         </form>
+        <form class="form" name="addNewElement" id="addNewElement">
+          <h2 class="form__title">Новое место</h2>
+          <input class="form__input" type="text" name="elementName" id="elementName" placeholder="Название">
+          <input class="form__input" type="text" name="elementImage" id="elementImage" placeholder="Ссылка на картинку">
+          <input class="form__save" type="submit" value="Создать">
+        </form>
+        <figure class="overlay__figure">
+          <img class="overlay__image" src="" alt="">
+          <figcaption class="overlay__caption"></figcaption>
+        </figure>
         <button class="overlay__close" type="button" aria-label="Закрыть окно"></button>
       </div>
-    </div>
+      </div>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer>
-  <script src="./scripts/script.js"></script>
+  <template class="template-element">
+    <article class="element">
+      <img class="element__image" src="" alt="">
+      <div class="element__body">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button" aria-label="Мне нравится"></button>
+      </div>
+      <button class="element__trash" type="button" aria-label="Удалить"></button>
+    </article>
+  </template>
 </body>
 </html>
