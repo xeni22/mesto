@@ -26,27 +26,33 @@
     <section class="elements">
       
     </section>
-    <div class="overlay">
-      <div class="overlay__popup">
+    <section class="overlay">
+      <section class="popup popup_edit-profile">
         <form class="form" name="editProfile" id="editProfile">
           <h2 class="form__title">Редактировать профиль</h2>
           <input class="form__input" type="text" name="profileName" id="profileName" placeholder="Имя">
           <input class="form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе">
           <input class="form__save" type="submit" value="Сохранить">
         </form>
+        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+      </section>
+      <section class="popup popup_new-card">
         <form class="form" name="addNewElement" id="addNewElement">
           <h2 class="form__title">Новое место</h2>
           <input class="form__input" type="text" name="elementName" id="elementName" placeholder="Название">
           <input class="form__input" type="text" name="elementImage" id="elementImage" placeholder="Ссылка на картинку">
           <input class="form__save" type="submit" value="Создать">
         </form>
-        <figure class="overlay__figure">
-          <img class="overlay__image" src="." alt=".">
-          <figcaption class="overlay__caption"></figcaption>
+        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+      </section>
+      <section class="popup popup_enlarge-image">
+        <figure class="popup__figure">
+          <img class="popup__image" src="." alt=".">
+          <figcaption class="popup__caption"></figcaption>
         </figure>
-        <button class="overlay__close" type="button" aria-label="Закрыть окно"></button>
-      </div>
-      </div>
+        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+      </section>
+    </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>

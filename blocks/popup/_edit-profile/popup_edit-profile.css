@@ -1,4 +1,4 @@
-.overlay__popup {
+.popup_edit-profile {
   width: 430px;
   padding: 36px;
   box-sizing: border-box;
@@ -9,7 +9,7 @@
   border-radius: 10px;
 }
 @media (max-width: 768px) {
-  .overlay__popup {
+  .popup_edit-profile {
     width: 282px;
     padding: 25px 22px;
   }  

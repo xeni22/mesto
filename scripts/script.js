@@ -1,25 +1,21 @@
 const overlay = document.querySelector('.overlay');
+const popup = document.querySelector('.popup');
+
 const editProfileBtn = document.querySelector('.profile__edit');
-const addNewElementBtn = document.querySelector('.profile__add');
-const closePopupBth = document.querySelector('.overlay__close');
-
-
+const editProfilePopup = document.querySelector('.popup_edit-profile');
 const editProfileForm = document.getElementById('editProfile');
-const addNewElementForm = document.getElementById('addNewElement');
-
-const popup = document.querySelector('.overlay__popup');
-
 const profileNamePopupInput = document.getElementById('profileName');
-const profileNameField = document.querySelector('.profile__name');
 const profileDescriptionPopupInput = document.getElementById('profileDescription');
+const profileNameField = document.querySelector('.profile__name');
 const profileDescriptionField = document.querySelector('.profile__description');
 
-const elementsContainer = document.querySelector('.elements');
-const elementTemplate = document.querySelector('.template-element');
-const newElementNameInput = document.getElementById('elementName');
-const newElementImageInput = document.getElementById('elementImage');
-
-
+const addNewElementBtn = document.querySelector('.profile__add');
+const addNewCardPopup = document.querySelector('.popup_new-card');
+const addNewElementForm = document.getElementById('addNewElement');
+const newCardNameInput = document.getElementById('elementName');
+const newCardImageInput = document.getElementById('elementImage');
+const cardsContainer = document.querySelector('.elements');
+const cardTemplate = document.querySelector('.template-element');
 const initialCards = [
   {name: 'Архыз', link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg', alt: 'Архыз'},
   {name: 'Челябинская область', link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg', alt: 'Челябинская область'},
@@ -29,11 +25,17 @@ const initialCards = [
   {name: 'Байкал', link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg', alt: 'Байкал'}
 ];
 
+const enlargeImagePopup = document.querySelector('.popup_enlarge-image');
+const image = enlargeImagePopup.querySelector('.popup__image');
+const figcaption = enlargeImagePopup.querySelector('.popup__caption');
+
+const closePopupBth = document.querySelectorAll('.popup__close');
+
 function render() {
-  elementsContainer.append(...initialCards.map(getElements));
+  cardsContainer.append(...initialCards.map(createCards));
 }
-function getElements(item) {
-  const element = elementTemplate.content.cloneNode(true);
+function createCards(item) {
+  const element = cardTemplate.content.cloneNode(true);
   const elementTitle = element.querySelector('.element__title');
   const elementImage = element.querySelector('.element__image');
   const likeElementBtn = element.querySelector('.element__like');
@@ -46,47 +48,43 @@ function getElements(item) {
   elementImage.addEventListener('click', openImage);
   return element;
 }
-function openImage(event) {
-  const figure = document.querySelector('.overlay__figure');
-  const image = figure.querySelector('.overlay__image');
-  const figcaption = figure.querySelector('.overlay__caption');
+function openPopup() {
   overlay.classList.add('overlay_shown');
-  popup.classList.add('overlay__popup_image');
-  figure.classList.add('overlay__figure_shown');
-  figcaption.textContent = event.target.alt;
-  image.src = event.target.src;
-  image.alt = event.target.alt;
-  overlay.style.background = 'rgba(0, 0, 0, .9)';
 }
-function deleteElement(event) {
-  const targetEl = event.target;
-  const targetItem = targetEl.closest('.element');
-  targetItem.remove();
-}
-function openPopupEditProfile(evt) {
-  evt.preventDefault();
-  overlay.classList.add('overlay_shown');
-  editProfileForm.classList.add('form_shown');
+function openPopupEditProfile() {
+  openPopup();
+  editProfilePopup.classList.add('popup_shown');
   profileNamePopupInput.value = profileNameField.textContent;
   profileDescriptionPopupInput.value = profileDescriptionField.textContent;
 }
-function updateProfileInfo(evt) {
-  evt.preventDefault();
+function updateProfileInfo(event) {
+  event.preventDefault();
   profileNameField.textContent = profileNamePopupInput.value;
   profileDescriptionField.textContent = profileDescriptionPopupInput.value;
-  closePopup(evt);
+  closePopup(event);
 }
-function openPopupAddNewElement(evt) {
-  evt.preventDefault();
+function openPopupAddNewElement() {
+  openPopup();
+  addNewCardPopup.classList.add('popup_shown');
   addNewElementForm.reset()
-  overlay.classList.add('overlay_shown');
-  addNewElementForm.classList.add('form_shown');
-  popup.classList.remove('overlay__popup_image');
 }
-function addNewElement(evt) {
-  evt.preventDefault();
-  elementsContainer.prepend(getElements({name: newElementNameInput.value, link: newElementImageInput.value, alt: newElementNameInput.value}));
-  closePopup(evt);
+function addNewElement(event) {
+  event.preventDefault();
+  cardsContainer.prepend(createCards({name: newCardNameInput.value, link: newCardImageInput.value, alt: newCardNameInput.value}));
+  closePopup(event);
+}
+function openImage(event) {
+  openPopup();
+  enlargeImagePopup.classList.add('popup_shown');
+  figcaption.textContent = event.target.alt;
+  image.src = event.target.src;
+  image.alt = event.target.alt;
+  overlay.classList.add('overlay_dark');
+}
+function closePopup(event) {
+  event.preventDefault();
+  overlay.classList.remove('overlay_shown');
+  event.target.closest('.popup').classList.remove('popup_shown');
 }
 function likeElement(item) {
   item.target.classList.toggle('element__like_active');
@@ -96,19 +94,14 @@ function deleteElement(event) {
   const targetItem = targetEl.closest('.element');
   targetItem.remove();
 }
-function closePopup(evt) {
-  evt.preventDefault();
-  overlay.classList.remove('overlay_shown');
-  editProfileForm.classList.remove('form_shown');
-  addNewElementForm.classList.remove('form_shown');
-  document.querySelector('.overlay__figure').classList.remove('overlay__figure_shown');
-  popup.classList.remove('overlay__popup_image');
-  overlay.style.background = 'rgba(0, 0, 0, .5)';
-}
 
 render();
 editProfileBtn.addEventListener('click', openPopupEditProfile);
-closePopupBth.addEventListener('click', closePopup);
 editProfileForm.addEventListener('submit', updateProfileInfo);
 addNewElementBtn.addEventListener('click', openPopupAddNewElement);
 addNewElementForm.addEventListener('submit', addNewElement);
+closePopupBth.forEach(
+  function(item) {
+    item.addEventListener("click", closePopup);
+  }
+);
