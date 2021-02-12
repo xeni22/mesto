@@ -61,10 +61,9 @@ const enlargeImagePopup = document.querySelector(".popup_enlarge-image");
 const image = enlargeImagePopup.querySelector(".popup__image");
 const figcaption = enlargeImagePopup.querySelector(".popup__caption");
 
-const closePopupBth = document.querySelectorAll(".popup__close");
-const closeEditProfilePopupBth = document.getElementById("closeEditProfilePopup");
-const closeNewCardPopupBth = document.getElementById("closeNewCardPopup");
-const closeImagePopupBth = document.getElementById("closeImagePopup");
+const closeEditProfilePopupBtn = document.getElementById("closeEditProfilePopup");
+const closeNewCardPopupBtn = document.getElementById("closeNewCardPopup");
+const closeImagePopupBtn = document.getElementById("closeImagePopup");
 
 function render() {
   cardsContainer.append(...initialCards.map(createCards));
@@ -148,6 +147,6 @@ editProfileBtn.addEventListener("click", openPopupEditProfile);
 editProfileForm.addEventListener("submit", updateProfileInfo);
 addNewElementBtn.addEventListener("click", openPopupAddNewElement);
 addNewElementForm.addEventListener("submit", addNewElement);
-closeEditProfilePopupBth.addEventListener('click', closePopupEditProfile);
-closeNewCardPopupBth.addEventListener('click', closePopupAddNewElement);
-closeImagePopupBth.addEventListener('click', closeImage);
+closeEditProfilePopupBtn.addEventListener('click', closePopupEditProfile);
+closeNewCardPopupBtn.addEventListener('click', closePopupAddNewElement);
+closeImagePopupBtn.addEventListener('click', closeImage);
