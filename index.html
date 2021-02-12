@@ -34,7 +34,7 @@
           <input class="form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе">
           <input class="form__save" type="submit" value="Сохранить">
         </form>
-        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+        <button class="popup__close" id="closeEditProfilePopup" type="button" aria-label="Закрыть окно"></button>
       </section>
       <section class="popup popup_new-card">
         <form class="form" name="addNewElement" id="addNewElement">
@@ -43,14 +43,14 @@
           <input class="form__input" type="text" name="elementImage" id="elementImage" placeholder="Ссылка на картинку">
           <input class="form__save" type="submit" value="Создать">
         </form>
-        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+        <button class="popup__close" id="closeNewCardPopup" type="button" aria-label="Закрыть окно"></button>
       </section>
       <section class="popup popup_enlarge-image">
         <figure class="popup__figure">
           <img class="popup__image" src="." alt=".">
           <figcaption class="popup__caption"></figcaption>
         </figure>
-        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+        <button class="popup__close" id="closeImagePopup" type="button" aria-label="Закрыть окно"></button>
       </section>
     </section>
   </main>
