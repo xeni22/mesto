@@ -6,6 +6,7 @@
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
   <script src="./scripts/script.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
 </head>
 <body class="page">
   <header class="header">
@@ -28,19 +29,25 @@
     </section>
     <section class="overlay">
       <section class="popup popup_edit-profile">
-        <form class="form" name="editProfile" id="editProfile">
+        <form class="form" name="editProfile" id="editProfile" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
-          <input class="form__input" type="text" name="profileName" id="profileName" placeholder="Имя">
-          <input class="form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе">
+          <input class="form__input" type="text" name="profileName" id="profileName" placeholder="Имя" minlength="2"
+          maxlength="40" required>
+          <span class="form__input-error" id="profileName-error"></span>
+          <input class="form__input" type="text" name="profileDescription" id="profileDescription" placeholder="О себе" minlength="2" maxlength="200" required>
+          <span class="form__input-error" id="profileDescription-error"></span>
           <input class="form__save" type="submit" value="Сохранить">
         </form>
         <button class="popup__close" id="closeEditProfilePopup" type="button" aria-label="Закрыть окно"></button>
       </section>
       <section class="popup popup_new-card">
-        <form class="form" name="addNewElement" id="addNewElement">
+        <form class="form" name="addNewElement" id="addNewElement" novalidate>
           <h2 class="form__title">Новое место</h2>
-          <input class="form__input" type="text" name="elementName" id="elementName" placeholder="Название">
-          <input class="form__input" type="text" name="elementImage" id="elementImage" placeholder="Ссылка на картинку">
+          <input class="form__input" type="text" name="newCardName" id="newCardName" placeholder="Название" minlength="2"
+          maxlength="30" required>
+          <span class="form__input-error" id="newCardName-error"></span>
+          <input class="form__input" type="url" name="newCardImage" id="newCardImage" placeholder="Ссылка на картинку" required>
+          <span class="form__input-error" id="newCardImage-error"></span>
           <input class="form__save" type="submit" value="Создать">
         </form>
         <button class="popup__close" id="closeNewCardPopup" type="button" aria-label="Закрыть окно"></button>

@@ -14,8 +14,8 @@ const profileDescriptionField = document.querySelector(".profile__description");
 const addNewElementBtn = document.querySelector(".profile__add");
 const addNewCardPopup = document.querySelector(".popup_new-card");
 const addNewElementForm = document.getElementById("addNewElement");
-const newCardNameInput = document.getElementById("elementName");
-const newCardImageInput = document.getElementById("elementImage");
+const newCardNameInput = document.getElementById("newCardName");
+const newCardImageInput = document.getElementById("newCardImage");
 const cardsContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".template-element");
 const initialCards = [
@@ -133,6 +133,13 @@ function closeImage() {
   closePopup(enlargeImagePopup);
   overlay.classList.remove("overlay_dark")
 }
+function closeOverlay(event) {
+  if(event.target === event.currentTarget || event.key === "Escape") {
+    closePopupEditProfile();
+    closePopupAddNewElement();
+    closeImage();
+  }
+}
 function likeElement(item) {
   item.target.classList.toggle("element__like_active");
 }
@@ -150,3 +157,5 @@ addNewElementForm.addEventListener("submit", addNewElement);
 closeEditProfilePopupBtn.addEventListener('click', closePopupEditProfile);
 closeNewCardPopupBtn.addEventListener('click', closePopupAddNewElement);
 closeImagePopupBtn.addEventListener('click', closeImage);
+overlay.addEventListener("click", closeOverlay);
+document.addEventListener('keydown', closeOverlay); 
