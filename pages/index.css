@@ -27,15 +27,10 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-@import url(../blocks/overlay/overlay.css);
-@import url(../blocks/overlay/_shown/overlay_shown.css);
-@import url(../blocks/overlay/_dark/overlay_dark.css);
-
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_shown/popup_shown.css);
-@import url(../blocks/popup/_edit-profile/popup_edit-profile.css);
-@import url(../blocks/popup/_new-card/popup_new-card.css);
-@import url(../blocks/popup/_image/popup_enlarge-image.css);
+@import url(../blocks/popup/_type/popup_type_enlarge-image.css);
+@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__caption/popup__caption.css);

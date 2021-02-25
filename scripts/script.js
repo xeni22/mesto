@@ -1,8 +1,7 @@
-const overlay = document.querySelector(".overlay");
-const popup = document.querySelector(".popup");
+const popups = document.querySelectorAll(".popup");
 
 const editProfileBtn = document.querySelector(".profile__edit");
-const editProfilePopup = document.querySelector(".popup_edit-profile");
+const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const editProfileForm = document.getElementById("editProfile");
 const profileNamePopupInput = document.getElementById("profileName");
 const profileDescriptionPopupInput = document.getElementById(
@@ -12,7 +11,7 @@ const profileNameField = document.querySelector(".profile__name");
 const profileDescriptionField = document.querySelector(".profile__description");
 
 const addNewElementBtn = document.querySelector(".profile__add");
-const addNewCardPopup = document.querySelector(".popup_new-card");
+const addNewCardPopup = document.querySelector(".popup_type_add-new-card");
 const addNewElementForm = document.getElementById("addNewElement");
 const newCardNameInput = document.getElementById("newCardName");
 const newCardImageInput = document.getElementById("newCardImage");
@@ -57,7 +56,7 @@ const initialCards = [
   },
 ];
 
-const enlargeImagePopup = document.querySelector(".popup_enlarge-image");
+const enlargeImagePopup = document.querySelector(".popup_type_enlarge-image");
 const image = enlargeImagePopup.querySelector(".popup__image");
 const figcaption = enlargeImagePopup.querySelector(".popup__caption");
 
@@ -83,8 +82,8 @@ function createCards(item) {
   return element;
 }
 function openPopup(item) {
-  overlay.classList.add("overlay_shown");
   item.classList.add("popup_shown");
+  document.addEventListener('keydown', closeByEscape); 
 }
 function openPopupEditProfile() {
   openPopup(editProfilePopup);
@@ -95,7 +94,7 @@ function updateProfileInfo(event) {
   event.preventDefault();
   profileNameField.textContent = profileNamePopupInput.value;
   profileDescriptionField.textContent = profileDescriptionPopupInput.value;
-  closePopupEditProfile(event);
+  closePopup(editProfilePopup);
 }
 function openPopupAddNewElement() {
   openPopup(addNewCardPopup);
@@ -109,37 +108,27 @@ function addNewElement(event) {
       alt: newCardNameInput.value,
     })
   );
-  closePopupAddNewElement(event);
+  closePopup(addNewCardPopup);
+  addNewElementForm.reset();
 }
 function openImage(event) {
   openPopup(enlargeImagePopup);
   figcaption.textContent = event.target.alt;
   image.src = event.target.src;
   image.alt = event.target.alt;
-  overlay.classList.add("overlay_dark");
 }
 function closePopup(item) {
-  overlay.classList.remove("overlay_shown");
   item.classList.remove("popup_shown");
+  document.removeEventListener('keydown', closeByEscape); 
 }
-function closePopupEditProfile() {
-  closePopup(editProfilePopup);
-}
-function closePopupAddNewElement() {
-  closePopup(addNewCardPopup);
-  addNewElementForm.reset();
-}
-function closeImage() {
-  closePopup(enlargeImagePopup);
-  overlay.classList.remove("overlay_dark")
-}
-function closeOverlay(event) {
-  if(event.target === event.currentTarget || event.key === "Escape") {
-    closePopupEditProfile();
-    closePopupAddNewElement();
-    closeImage();
+
+function closeByEscape(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_shown')
+    closePopup(openedPopup);
   }
 }
+
 function likeElement(item) {
   item.target.classList.toggle("element__like_active");
 }
@@ -149,13 +138,18 @@ function deleteElement(event) {
   targetItem.remove();
 }
 
+popups.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    if (event.target.classList.contains('popup_shown')) {
+      closePopup(item);
+    } if (event.target.classList.contains('popup__close')) {
+      closePopup(item);
+    }
+  })
+})
+
 render();
 editProfileBtn.addEventListener("click", openPopupEditProfile);
 editProfileForm.addEventListener("submit", updateProfileInfo);
 addNewElementBtn.addEventListener("click", openPopupAddNewElement);
 addNewElementForm.addEventListener("submit", addNewElement);
-closeEditProfilePopupBtn.addEventListener('click', closePopupEditProfile);
-closeNewCardPopupBtn.addEventListener('click', closePopupAddNewElement);
-closeImagePopupBtn.addEventListener('click', closeImage);
-overlay.addEventListener("click", closeOverlay);
-document.addEventListener('keydown', closeOverlay); 

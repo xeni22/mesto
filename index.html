@@ -27,8 +27,8 @@
     <section class="elements">
       
     </section>
-    <section class="overlay">
-      <section class="popup popup_edit-profile">
+    <section class="popup popup_type_edit-profile">
+      <section class="popup__container">
         <form class="form" name="editProfile" id="editProfile" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
           <input class="form__input" type="text" name="profileName" id="profileName" placeholder="Имя" minlength="2"
@@ -40,7 +40,9 @@
         </form>
         <button class="popup__close" id="closeEditProfilePopup" type="button" aria-label="Закрыть окно"></button>
       </section>
-      <section class="popup popup_new-card">
+    </section>
+    <section class="popup popup_type_add-new-card">
+      <section class="popup__container">
         <form class="form" name="addNewElement" id="addNewElement" novalidate>
           <h2 class="form__title">Новое место</h2>
           <input class="form__input" type="text" name="newCardName" id="newCardName" placeholder="Название" minlength="2"
@@ -52,11 +54,11 @@
         </form>
         <button class="popup__close" id="closeNewCardPopup" type="button" aria-label="Закрыть окно"></button>
       </section>
-      <section class="popup popup_enlarge-image">
-        <figure class="popup__figure">
-          <img class="popup__image" src="." alt=".">
-          <figcaption class="popup__caption"></figcaption>
-        </figure>
+    </section>
+    <section class="popup popup_type_enlarge-image">
+      <section class="popup__figure">
+        <img class="popup__image" src="." alt=".">
+        <p class="popup__caption"></p>
         <button class="popup__close" id="closeImagePopup" type="button" aria-label="Закрыть окно"></button>
       </section>
     </section>
