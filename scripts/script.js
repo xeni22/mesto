@@ -20,6 +20,10 @@ const addNewElementForm = document.getElementById("addNewElement");
 const newCardNameInput = document.getElementById("newCardName");
 const newCardImageInput = document.getElementById("newCardImage");
 
+const enlargeImagePopup = document.querySelector(".popup_type_enlarge-image");
+const image = enlargeImagePopup.querySelector(".popup__image");
+const figcaption = enlargeImagePopup.querySelector(".popup__caption");
+
 const cardList = document.querySelector(".elements");
 
 const formData = {
@@ -70,12 +74,9 @@ function addNewElement(event) {
   closePopup(addNewCardPopup);
   addNewElementForm.reset();
   addNewElementFormValidator.toggleButtonState();
-  cardElement.addEventListener("click", openImage);
+  cardElement.querySelector(".element__image").addEventListener("click", openImage);
 }
 function openImage(event) {
-  const enlargeImagePopup = document.querySelector(".popup_type_enlarge-image");
-  const image = enlargeImagePopup.querySelector(".popup__image");
-  const figcaption = enlargeImagePopup.querySelector(".popup__caption");
   openPopup(enlargeImagePopup);
   figcaption.textContent = event.target.alt;
   image.src = event.target.src;
@@ -91,7 +92,6 @@ function closeByEscape(event) {
     closePopup(openedPopup);
   }
 }
-
 const cardImages = document.querySelectorAll(".element__image");
 cardImages.forEach((item) => {
   item.addEventListener("click", openImage);
