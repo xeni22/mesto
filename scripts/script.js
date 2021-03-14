@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import { initialCards } from "./initialCards.js";
 
 const popups = document.querySelectorAll(".popup");
 
@@ -19,59 +20,26 @@ const addNewElementForm = document.getElementById("addNewElement");
 const newCardNameInput = document.getElementById("newCardName");
 const newCardImageInput = document.getElementById("newCardImage");
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    alt: "Архыз",
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    alt: "Челябинская область",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    alt: "Иваново",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    alt: "Камчатка",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    alt: "Холмогорский район",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    alt: "Байкал",
-  },
-];
+const cardList = document.querySelector(".elements");
+
 const formData = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save',
   inactiveButtonClass: 'form__save_disabled',
   inputErrorClass: 'form__input-error',
-  errorClass: 'form__input-error_shown'
+  errorClass: 'form__input-error_shown',
 }
+
+const editProfileFormValidator = new FormValidator(formData, editProfileForm);
+const addNewElementFormValidator = new FormValidator(formData, addNewElementForm);
 
 initialCards.forEach((item) => {
   const card = new Card(item, ".template-element");
-  const cardList = document.querySelector(".elements");
   const cardElement = card.generateCard();
   cardList.append(cardElement);
 });
+
 function openPopup(item) {
   item.classList.add("popup_shown");
   document.addEventListener("keydown", closeByEscape);
@@ -94,26 +62,41 @@ function addNewElement(event) {
   event.preventDefault();
   const data = {
     name: newCardNameInput.value,
-    link: newCardImageInput.value,
-    alt: newCardNameInput.value,
+    link: newCardImageInput.value
   };
   const card = new Card(data, ".template-element");
-  const cardList = document.querySelector(".elements");
   const cardElement = card.generateCard();
   cardList.prepend(cardElement);
   closePopup(addNewCardPopup);
   addNewElementForm.reset();
+  addNewElementFormValidator.toggleButtonState();
+  cardElement.addEventListener("click", openImage);
+}
+function openImage(event) {
+  const enlargeImagePopup = document.querySelector(".popup_type_enlarge-image");
+  const image = enlargeImagePopup.querySelector(".popup__image");
+  const figcaption = enlargeImagePopup.querySelector(".popup__caption");
+  openPopup(enlargeImagePopup);
+  figcaption.textContent = event.target.alt;
+  image.src = event.target.src;
+  image.alt = event.target.alt;
 }
 function closePopup(item) {
   item.classList.remove("popup_shown");
   document.removeEventListener("keydown", closeByEscape);
 }
-export function closeByEscape(event) {
+function closeByEscape(event) {
   if (event.key === "Escape") {
     const openedPopup = document.querySelector(".popup_shown");
     closePopup(openedPopup);
   }
 }
+
+const cardImages = document.querySelectorAll(".element__image");
+cardImages.forEach((item) => {
+  item.addEventListener("click", openImage);
+});
+
 popups.forEach((item) => {
   item.addEventListener("click", (event) => {
     if (event.target.classList.contains("popup_shown")) {
@@ -125,10 +108,7 @@ popups.forEach((item) => {
   });
 });
 
-const editProfileFormValidator = new FormValidator(formData, editProfileForm);
 editProfileFormValidator.enableValidation();
-
-const addNewElementFormValidator = new FormValidator(formData, addNewElementForm);
 addNewElementFormValidator.enableValidation();
 
 editProfileBtn.addEventListener("click", openPopupEditProfile);
