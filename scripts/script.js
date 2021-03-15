@@ -8,9 +8,7 @@ const editProfileBtn = document.querySelector(".profile__edit");
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const editProfileForm = document.getElementById("editProfile");
 const profileNamePopupInput = document.getElementById("profileName");
-const profileDescriptionPopupInput = document.getElementById(
-  "profileDescription"
-);
+const profileDescriptionPopupInput = document.getElementById("profileDescription");
 const profileNameField = document.querySelector(".profile__name");
 const profileDescriptionField = document.querySelector(".profile__description");
 
@@ -27,19 +25,19 @@ const figcaption = enlargeImagePopup.querySelector(".popup__caption");
 const cardList = document.querySelector(".elements");
 
 const formData = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__save',
-  inactiveButtonClass: 'form__save_disabled',
-  inputErrorClass: 'form__input-error',
-  errorClass: 'form__input-error_shown',
-}
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__save",
+  inactiveButtonClass: "form__save_disabled",
+  inputErrorClass: "form__input-error",
+  errorClass: "form__input-error_shown",
+};
 
 const editProfileFormValidator = new FormValidator(formData, editProfileForm);
-const addNewElementFormValidator = new FormValidator(formData, addNewElementForm);
+const addNewElementFormValidator = new FormValidator(formData,addNewElementForm);
 
-initialCards.forEach((item) => {
-  const card = new Card(item, ".template-element");
+initialCards.forEach((data) => {
+  const card = new Card(data, ".template-element", openImage);
   const cardElement = card.generateCard();
   cardList.append(cardElement);
 });
@@ -66,17 +64,16 @@ function addNewElement(event) {
   event.preventDefault();
   const data = {
     name: newCardNameInput.value,
-    link: newCardImageInput.value
+    link: newCardImageInput.value,
   };
-  const card = new Card(data, ".template-element");
+  const card = new Card(data, ".template-element", openImage);
   const cardElement = card.generateCard();
   cardList.prepend(cardElement);
   closePopup(addNewCardPopup);
   addNewElementForm.reset();
   addNewElementFormValidator.toggleButtonState();
-  cardElement.querySelector(".element__image").addEventListener("click", openImage);
 }
-function openImage(event) {
+function openImage(name, link) {
   openPopup(enlargeImagePopup);
   figcaption.textContent = event.target.alt;
   image.src = event.target.src;
@@ -92,11 +89,6 @@ function closeByEscape(event) {
     closePopup(openedPopup);
   }
 }
-const cardImages = document.querySelectorAll(".element__image");
-cardImages.forEach((item) => {
-  item.addEventListener("click", openImage);
-});
-
 popups.forEach((item) => {
   item.addEventListener("click", (event) => {
     if (event.target.classList.contains("popup_shown")) {
