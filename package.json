@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Привет! Mesto -- это страница, куда в дальнейшем можно будет добавлять фотографии, удалять их и ставить лайки: https://xeni22.github.io/mesto/ 📷",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeni22/mesto.git"
+  },
+  "author": "Xeni Trushnikova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xeni22/mesto/issues"
+  },
+  "homepage": "https://github.com/xeni22/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.2.1",
+    "cssnano": "^4.1.11",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "postcss-loader": "^5.2.0",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "core-js": "^3.10.1"
+  }
+}

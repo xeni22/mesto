@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
-  <script src="./scripts/script.js" type='module' defer></script>
+  <!-- <script src="./scripts/script.js" type='module' defer></script> -->
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto">
   </header>
   <main>
     <section class="profile">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография профиля">
+      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Фотография профиля">
       <div class="profile__info">
         <div class="profile__edit-line">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -24,7 +23,7 @@
       <button class="profile__add" type="button" aria-label="Добавить запись"></button>
     </section>
     <section class="elements">
-      
+
     </section>
     <section class="popup popup_type_edit-profile">
       <section class="popup__container">
