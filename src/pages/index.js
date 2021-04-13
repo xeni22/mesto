@@ -25,8 +25,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import FormValidator from "../components/FormValidator.js";
 
 const handleAddCard = () => {
-  addNewCardForm.reset();
-  addNewCardFormValidator.toggleButtonState();
   addNewCardPopup.open();
 };
 
@@ -34,7 +32,6 @@ const handleEditProfile = () => {
   const { name, description } = user.getUserInfo();
   profileNamePopupInput.value = name;
   profileDescriptionPopupInput.value = description;
-  editProfileFormValidator.toggleButtonState();
   editProfilePopup.open();
 };
 
