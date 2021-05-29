@@ -10,7 +10,7 @@
   line-height: 17px;
 }
 .form__input:first-of-type {
-  margin-top: 0;
+  margin-top: 44px;
 }
 .form__input:active, 
 .form__input:focus {
