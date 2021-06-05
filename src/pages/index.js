@@ -122,12 +122,14 @@ const editProfilePopup = new PopupWithForm(editProfilePopupSelector, {
       })
       .then((userData) => {
         user.setUserInfo(userData);
-        editProfilePopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при изменении данных в профиле", err);
+      })
+      .finally(() => {
+        editProfilePopup.close();
       });
-  },
+  }
 });
 
 const addNewCardPopup = new PopupWithForm(addNewCardPopupSelector, {
@@ -140,12 +142,14 @@ const addNewCardPopup = new PopupWithForm(addNewCardPopupSelector, {
       })
       .then((card) => {
         cardsSection.addItem(card);
-        addNewCardPopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при добавлении карточки", err);
+      })
+      .finally(() => {
+        addNewCardPopup.close();
       });
-  },
+  }
 });
 
 const avatarPopup = new PopupWithForm(avatarPopupSelector, {
@@ -155,10 +159,12 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, {
       .updateAvatar(userData["newAvatar"])
       .then((userData) => {
         user.setUserAvatar(userData);
-        avatarPopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при обновлении аватара", err);
+      })
+      .finally(() => {
+        avatarPopup.close();
       });
   },
 });

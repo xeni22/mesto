@@ -32,24 +32,23 @@ export default class Card {
         .classList.contains("element__like_active")
     ) {
       this._toggleLike("PUT", this._card._id)
-        .then((card) => {
-          this._setLikesCount(card.likes.length);
-          this._checkMyLike(card.likes);
-        })
+      .then((card) => {
+        this._checkLikes(card);
+      })
         .catch((err) => {
           console.log("Ошибка при постановке лайка", err);
         });
     } else {
       this._toggleLike("DELETE", this._card._id)
         .then((card) => {
-          this._setLikesCount(card.likes.length);
-          this._checkMyLike(card.likes);
+          this._checkLikes(card);
         })
         .catch((err) => {
           console.log("Ошибка при удалении лайка", err);
         });
     }
   }
+
   _setLikesCount(count) {
     this._likesCountEl.textContent = count;
   }
@@ -65,14 +64,18 @@ export default class Card {
         .classList.remove("element__like_active");
     }
   }
+  _checkLikes(card) {
+    this._setLikesCount(card.likes.length);
+    this._checkMyLike(card.likes);
+  }
   _handleDeleteCard() {
     this._deleteCard(this._card._id, this._element);
   }
   getIdCard() {
     return this._cardId;
   }
-  deleteElement(event) {
-    event.target.closest(".element").remove();
+  deleteElement() {
+    this._removeBtn.closest(".element").remove();
   }
   generateCard() {
     this._element = this._getTemplate();
@@ -82,8 +85,7 @@ export default class Card {
     this._image.alt = this._name;
     this._title.textContent = this._name;
     this._likesCountEl = this._element.querySelector(".element__like-count");
-    this._setLikesCount(this._card.likes.length);
-    this._checkMyLike(this._card.likes);
+    this._checkLikes(this._card)
     this._setEventListeners();
 
     return this._element;
