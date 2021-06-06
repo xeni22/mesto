@@ -59,13 +59,9 @@ const confirmAction = () => {
   });
 };
 
-function deleteCardWithConfirm(cardId, cardEl) {
+function deleteCardWithConfirm(cardId) {
   api
     .deleteCard(cardId)
-    .then(() => {
-      cardEl.remove();
-      cardEl = null;
-    })
     .catch((err) => {
       console.log("Ошибка при удалении карточки", err);
     });
@@ -87,10 +83,13 @@ const getCard = (data) => {
       },
     },
     {
-      handleDeleteCard: function (cardId, cardEl) {
+      handleDeleteCard: function (cardId) {
         confirmAction()
           .then(() => {
-            deleteCardWithConfirm(cardId, cardEl);
+            deleteCardWithConfirm(cardId);
+          })
+          .then(() => {
+            card.deleteElement();
           })
           .catch(() => console.log("Отмена удаления карточки"));
       },
@@ -122,12 +121,13 @@ const editProfilePopup = new PopupWithForm(editProfilePopupSelector, {
       })
       .then((userData) => {
         user.setUserInfo(userData);
+        editProfilePopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при изменении данных в профиле", err);
       })
       .finally(() => {
-        editProfilePopup.close();
+        editProfilePopup.returnSubmitBtnInitialValue();
       });
   }
 });
@@ -142,12 +142,13 @@ const addNewCardPopup = new PopupWithForm(addNewCardPopupSelector, {
       })
       .then((card) => {
         cardsSection.addItem(card);
+        addNewCardPopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при добавлении карточки", err);
       })
       .finally(() => {
-        addNewCardPopup.close();
+        addNewCardPopup.returnSubmitBtnInitialValue();
       });
   }
 });
@@ -159,12 +160,13 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, {
       .updateAvatar(userData["newAvatar"])
       .then((userData) => {
         user.setUserAvatar(userData);
+        avatarPopup.close();
       })
       .catch((err) => {
         console.log("Ошибка при обновлении аватара", err);
       })
       .finally(() => {
-        avatarPopup.close();
+        avatarPopup.returnSubmitBtnInitialValue();
       });
   },
 });

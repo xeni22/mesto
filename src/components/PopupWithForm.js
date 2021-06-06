@@ -18,10 +18,12 @@ export default class PopupWithForm extends Popup {
   savingData() {
     this._submitBtn.value = "Сохранение...";
   }
+  returnSubmitBtnInitialValue() {
+    this._submitBtn.value = this._submitBtnCaption;
+  }
   close() {
     this._form.reset();
     super.close();
-    this._submitBtn.value = this._submitBtnCaption;
   }
   setEventListeners() {
     super.setEventListeners();

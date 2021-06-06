@@ -69,7 +69,7 @@ export default class Card {
     this._checkMyLike(card.likes);
   }
   _handleDeleteCard() {
-    this._deleteCard(this._card._id, this._element);
+    this._deleteCard(this._card._id);
   }
   getIdCard() {
     return this._cardId;
