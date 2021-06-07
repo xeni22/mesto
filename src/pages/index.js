@@ -87,7 +87,7 @@ const getCard = (data) => {
           .then(() => {
             card.deleteElement();
           })
-          .catch((err) => console.log("Ошибка при удалении карточки", err));
+          .catch((err) => console.log("Отмена удаления карточки", err));
       },
     }
   );
