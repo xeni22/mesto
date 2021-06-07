@@ -60,11 +60,7 @@ const confirmAction = () => {
 };
 
 function deleteCardWithConfirm(cardId) {
-  api
-    .deleteCard(cardId)
-    .catch((err) => {
-      console.log("Ошибка при удалении карточки", err);
-    });
+  return api.deleteCard(cardId)
 }
 
 const getCard = (data) => {
@@ -86,12 +82,12 @@ const getCard = (data) => {
       handleDeleteCard: function (cardId) {
         confirmAction()
           .then(() => {
-            deleteCardWithConfirm(cardId);
+            return deleteCardWithConfirm(cardId);
           })
           .then(() => {
             card.deleteElement();
           })
-          .catch(() => console.log("Отмена удаления карточки"));
+          .catch((err) => console.log("Ошибка при удалении карточки", err));
       },
     }
   );
